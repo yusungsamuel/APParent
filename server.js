@@ -4,7 +4,7 @@
 
 // load the Express node package
 var express = require("express");
-var path = require('path');
+
 // require all of our models by requiring the models folder
 // Save this to a variable and name it "db".
 var db = require("./models");
@@ -28,8 +28,9 @@ app.use(express.json());
 
 // set up the static folder so the Express app can use
 // the css stylesheet, the images, etc...
-app.use('/static', express.static(path.join(__dirname, 'client/build')));
-
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("client/build"));
+}
 app.use(session({
   key: 'user_sid',
   secret: 'goN6DJJC6E287cC77kkdYuNuAyWnz7Q3iZj8',
