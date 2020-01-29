@@ -28,7 +28,7 @@ app.use(express.json());
 
 // set up the static folder so the Express app can use
 // the css stylesheet, the images, etc...
-app.use(express.static("./client/public"));
+app.use('/static', express.static(path.join(__dirname, 'client/build')));
 
 app.use(session({
   key: 'user_sid',
