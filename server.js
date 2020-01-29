@@ -4,7 +4,7 @@
 
 // load the Express node package
 var express = require("express");
-
+var path = require('path');
 // require all of our models by requiring the models folder
 // Save this to a variable and name it "db".
 var db = require("./models");
